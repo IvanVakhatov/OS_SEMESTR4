@@ -8,7 +8,7 @@ int main (int argc, char *argv[]) {
    fd = open("test_file.txt", O_RDONLY);
    // Если возникла ошибка при открытии файла
    if (fd == -1) {
-      printf("Error: %s\n", strerror(5));
+      printf("Error: %s\n", strerror(errno));
       exit(EXIT_FAILURE);
    }
    // Иначе - вывести номер дескриптора
