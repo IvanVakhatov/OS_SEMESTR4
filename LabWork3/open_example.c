@@ -22,5 +22,7 @@ int main() {
         perror("Open w.log file: ");
         return 1;
     }
+    /* FOR THE RECORD: int creat(const char *pathname, mode_t mode) ==
+    fd = open(pathname, O_WRONLY | O_CREAT | O_TRUNC, mode); */
     return 0;
 }
