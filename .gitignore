@@ -43,6 +43,9 @@
 *.su
 *.idb
 *.pdb
+*.swp
+.~
+thumbs.db
 
 # Kernel Module Compile Results
 *.mod*
