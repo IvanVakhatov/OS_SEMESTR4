@@ -22,8 +22,14 @@ number1: number1.o
 number1.o: number1.c main_header.h
 	gcc -O0 -g3 -Wall -c number1.c
 
+number2: number2.o
+	gcc -o number2 number2.o
+
+number2.o: number2.c main_header.h
+	gcc -O0 -g3 -Wall -c number2.c
+
 clean:
 	@echo "This is a clean action"
-	rm -rf open_example read_example write_example number1 *.o
+	rm -rf open_example read_example write_example number1 number2 *.o
 
-all: open_example read_example write_example number1
+all: open_example read_example write_example number1 number2
