@@ -24,5 +24,12 @@ int main() {
     }
     /* FOR THE RECORD: int creat(const char *pathname, mode_t mode) ==
     fd = open(pathname, O_WRONLY | O_CREAT | O_TRUNC, mode); */
+    if (fd >= 0) {
+        if (close(fd) == -1) {
+            perror("Close: ");
+            return 1;
+        }
+    }
+    fd = -1;
     return 0;
 }
