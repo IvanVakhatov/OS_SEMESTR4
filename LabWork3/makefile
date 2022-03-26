@@ -16,8 +16,14 @@ write_example: write_example.o
 write_example.o: write_example.c main_header.h
 	gcc -O0 -g3 -Wall -c write_example.c
 
+number1: number1.o
+	gcc -o number1 number1.o
+
+number1.o: number1.c main_header.h
+	gcc -O0 -g3 -Wall -c number1.c
+
 clean:
 	@echo "This is a clean action"
-	rm -rf open_example read_example write_example *.o
+	rm -rf open_example read_example write_example number1 *.o
 
-all: open_example read_example write_example
+all: open_example read_example write_example number1
