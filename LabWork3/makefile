@@ -34,9 +34,15 @@ number3: number3.o
 number3.o: number3.c main_header.h
 	gcc -O0 -g3 -Wall -c number3.c
 
+number4: number4.o
+	gcc -o number4 number4.o
+
+number4.o: number3.c main_header.h
+	gcc -O0 -g3 -Wall -c number4.c
+
 clean:
 	@echo "This is a clean action"
 	rm -rf open_example read_example write_example 
-	rm -rf number1 number2 number3 *.o
+	rm -rf number1 number2 number3 number4 *.o
 
-all: open_example read_example write_example number1 number2 number3
+all: open_example read_example write_example number1 number2 number3 number4
