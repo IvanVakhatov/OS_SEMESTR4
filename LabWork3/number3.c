@@ -1,8 +1,9 @@
 #include "main_header.h"
+
 #define READ_LENGTH 1000
+char buffer[READ_LENGTH];
 
 int main(int argc, char* argv[]) {
-    char buffer[READ_LENGTH];
     int cp_from, cp_to;
     cp_from = open(argv[1], O_RDONLY | S_IRUSR, S_IWUSR);
     if (cp_from == -1) {
