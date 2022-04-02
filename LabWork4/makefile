@@ -10,8 +10,14 @@ getpid_ex: getpid_ex.o
 getpid_ex.o: getpid_ex.c main_header.h
 	gcc -O0 -g3 -Wall -c getpid_ex.c
 
+env_var: env_var.o
+	gcc -o env_var env_var.o
+
+env_var.o: env_var.c main_header.h
+	gcc -O0 -g3 -Wall -c env_var.c
+
 clean:
 	@echo "This is a clean action"
-	rm -rf example1 getpid_ex *.o
+	rm -rf example1 getpid_ex env_var *.o
 
-all: example1 getpid_ex
+all: example1 getpid_ex env_var
