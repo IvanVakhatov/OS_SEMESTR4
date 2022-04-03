@@ -5,5 +5,5 @@ int main(void) {
     int ppid_t = getppid();
     printf("PID is: %d\n", pid_t);
     printf("Parrent PID is: %d\n", ppid_t);
-    return 0;
+    exit(EXIT_SUCCESS);
 }
