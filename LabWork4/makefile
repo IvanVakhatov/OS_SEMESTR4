@@ -4,11 +4,11 @@ example1: example1.o
 example1.o: example1.c main_header.h
 	gcc -O0 -g3 -Wall -c example1.c
 
-getpid_ex: getpid_ex.o
-	gcc -o getpid_ex getpid_ex.o
+number1: number1.o
+	gcc -o number1 number1.o
 
-getpid_ex.o: getpid_ex.c main_header.h
-	gcc -O0 -g3 -Wall -c getpid_ex.c
+number1.o: number1.c main_header.h
+	gcc -O0 -g3 -Wall -c number1.c
 
 env_var: env_var.o
 	gcc -o env_var env_var.o
@@ -24,6 +24,6 @@ env_calls.o: env_calls.c main_header.h
 
 clean:
 	@echo "This is a clean action"
-	rm -rf example1 getpid_ex env_var env_calls *.o
+	rm -rf example1 number1 env_var env_calls *.o
 
-all: example1 getpid_ex env_var env_calls
+all: example1 number1 env_var env_calls
