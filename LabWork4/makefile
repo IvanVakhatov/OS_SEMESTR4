@@ -16,8 +16,14 @@ env_var: env_var.o
 env_var.o: env_var.c main_header.h
 	gcc -O0 -g3 -Wall -c env_var.c
 
+env_calls: env_calls.o
+	gcc -o env_calls env_calls.o
+
+env_calls.o: env_calls.c main_header.h
+	gcc -O0 -g3 -Wall -c env_calls.c
+
 clean:
 	@echo "This is a clean action"
-	rm -rf example1 getpid_ex env_var *.o
+	rm -rf example1 getpid_ex env_var env_calls *.o
 
-all: example1 getpid_ex env_var
+all: example1 getpid_ex env_var env_calls
