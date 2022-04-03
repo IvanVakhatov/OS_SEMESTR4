@@ -13,7 +13,7 @@ int main (int argc, char *argv[]) {
             count++;
         }
     }
-    if (strcmp(my_var, "SOMEVAR=VAR") == 0) {
+    else if (strcmp(my_var, "SOMEVAR=VAR") == 0) {
         if (setenv("SOMEVAR", "VAR", 0) == -1) {
             perror("Setenv error: ");
             return 1;
