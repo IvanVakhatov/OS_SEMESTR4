@@ -10,6 +10,12 @@ number1: number1.o
 number1.o: number1.c main_header.h
 	gcc -O0 -g3 -Wall -c number1.c
 
+number2: number2.o
+	gcc -o number2 number2.o
+
+number2.o: number2.c main_header.h
+	gcc -O0 -g3 -Wall -c number2.c
+
 env_var: env_var.o
 	gcc -o env_var env_var.o
 
@@ -24,6 +30,6 @@ env_calls.o: env_calls.c main_header.h
 
 clean:
 	@echo "This is a clean action"
-	rm -rf example1 number1 env_var env_calls *.o
+	rm -rf example1 number1 number2 env_var env_calls *.o
 
-all: example1 number1 env_var env_calls
+all: example1 number1 number2 env_var env_calls
