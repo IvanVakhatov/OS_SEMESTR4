@@ -1,3 +1,3 @@
 # Description of tasks
 
-![Description of tasks](LAB4_tasks_description.png)
+![Description of tasks](LAB5_tasks_description.png)
