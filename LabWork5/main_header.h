@@ -10,5 +10,7 @@
 с файловыми дескрипторами */
 #include <errno.h> /* Объявление errno и определение констант ошибок */
 #include <string.h> /* Наиболее используемые функции обработки строк */
+#include <signal.h>
+#include <sys/wait.h>
 typedef enum { FALSE, TRUE } Boolean;
 #endif
