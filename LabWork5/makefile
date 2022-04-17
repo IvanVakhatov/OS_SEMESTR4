@@ -22,8 +22,14 @@ number2: number2.o
 number2.o: number2.c main_header.h
 	gcc -O0 -g3 -Wall -c number2.c
 
+number3: number3.o
+	gcc -o number3 number3.o
+
+number3.o: number3.c main_header.h
+	gcc -O0 -g3 -Wall -c number3.c
+
 clean:
 	@echo "This is a clean action"
-	rm -rf fork_example at_on_exit number1 number2 *.o
+	rm -rf fork_example at_on_exit number1 number2 number3 *.o
 
-all: fork_example at_on_exit number1 number2
+all: fork_example at_on_exit number1 number2 number3

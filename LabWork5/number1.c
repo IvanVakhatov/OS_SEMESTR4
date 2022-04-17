@@ -2,8 +2,12 @@
 
 int main(int argc, char* argv[]) {
     pid_t pid = fork();
-    printf("\n");
-    if (pid == 0) {
+    
+    if (pid == -1) {
+        perror("Fork error: ");
+        exit(EXIT_FAILURE);
+    }
+    else if (pid == 0) {
         printf("This is child. PID: %d; Parent's PID: %d\n", getpid(), getppid());
     }
     else {
