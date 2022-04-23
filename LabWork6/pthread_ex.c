@@ -3,11 +3,12 @@
 
 void* process_command_thread(void* p) {
     int cycles = 10;
-    printf("Hello from process command thread\n");
+    printf("Hello from process command thread %lu\n", pthread_self());
+
     for (int i = 0; i < cycles; i++) {
         printf("Process command thread cycle [%d]\n", i);
     }
-    return 0;
+    pthread_exit((void*)0);
 }
 
 int main() {
