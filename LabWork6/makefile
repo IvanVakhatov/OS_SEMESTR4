@@ -1,20 +1,20 @@
-fork_example: fork_example.o
-	gcc -o fork_example fork_example.o
+pthread_ex: pthread_ex.o
+	gcc -o pthread_ex pthread_ex.o -pthread
 
-fork_example.o: fork_example.c main_header.h
-	gcc -O0 -g3 -Wall -c fork_example.c
+pthread_ex.o: pthread_ex.c main_header.h
+	gcc -O0 -g3 -Wall -c pthread_ex.c -pthread
 
-at_on_exit: at_on_exit.o
-	gcc -o at_on_exit at_on_exit.o
+thread_join_ex: thread_join_ex.o
+	gcc -o thread_join_ex thread_join_ex.o -pthread
 
-at_on_exit.o: at_on_exit.c main_header.h
-	gcc -O0 -g3 -Wall -c at_on_exit.c
+thread_join_ex.o: thread_join_ex.c main_header.h
+	gcc -O0 -g3 -Wall -c thread_join_ex.c -pthread
 
 number1: number1.o
-	gcc -o number1 number1.o
+	gcc -o number1 number1.o -pthread
 
 number1.o: number1.c main_header.h
-	gcc -O0 -g3 -Wall -c number1.c
+	gcc -O0 -g3 -Wall -c number1.c -pthread
 
 number2: number2.o
 	gcc -o number2 number2.o
@@ -28,38 +28,8 @@ number3: number3.o
 number3.o: number3.c main_header.h
 	gcc -O0 -g3 -Wall -c number3.c
 
-number4: number4.o
-	gcc -o number4 number4.o
-
-number4.o: number4.c main_header.h
-	gcc -O0 -g3 -Wall -c number4.c
-
-number5: number5.o
-	gcc -o number5 number5.o
-
-number5.o: number5.c main_header.h
-	gcc -O0 -g3 -Wall -c number5.c
-
-number6: number6.o
-	gcc -o number6 number6.o
-
-number6.o: number6.c main_header.h
-	gcc -O0 -g3 -Wall -c number6.c
-
-number7: number7.o
-	gcc -o number7 number7.o
-
-number7.o: number7.c main_header.h
-	gcc -O0 -g3 -Wall -c number7.c
-
-env_vars: env_vars.o
-	gcc -o env_vars env_vars.o
-
-env_vars.o: env_vars.c main_header.h
-	gcc -O0 -g3 -Wall -c env_vars.c
-
 clean:
 	@echo "This is a clean action"
-	rm -rf fork_example at_on_exit number1 number2 number3 number4 number5 number6 number7 env_vars *.o
+	rm -rf pthread_ex thread_join_ex number1 *.o
 	
-all: fork_example at_on_exit number1 number2 number3 number4 number5 number6 number7 env_vars
+all: pthread_ex thread_join_ex number1
