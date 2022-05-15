@@ -30,6 +30,6 @@ number3.o: number3.c main_header.h
 
 clean:
 	@echo "This is a clean action"
-	rm -rf pthread_ex thread_join_ex number1 number2 *.o
+	rm -rf pthread_ex thread_join_ex number1 number2 number3 *.o
 	
-all: pthread_ex thread_join_ex number1 number2
+all: pthread_ex thread_join_ex number1 number2 number3
