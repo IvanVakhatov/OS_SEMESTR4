@@ -21,8 +21,6 @@ void* sortSequence(void* p) {
     lseek(fd, 0, SEEK_SET);
     char buffer[file_size + 1];
     read(fd, &buffer, file_size + 1);
-    write(STDOUT_FILENO, &buffer, file_size + 1);
-    printf("\n");
 
     int num_array[file_size];
     for (int i = 0; i < file_size; i++) {
@@ -57,8 +55,9 @@ int main() {
     //char command[67];
     pthread_t process_command_thread;
     int fd, ret;
+    int iret, count = 0;
 
-    //strcpy(command, "(for((i=1;i<=1000;i++)); do echo $(($RANDOM)); done) > digits2.txt");
+    //strcpy(command, "for((i=1;i<=10;i++)); do echo -n $(($RANDOM))" "; done > digits2.txt");
     //system(command);
 
     fd = open("digits2.txt", O_RDONLY);
@@ -73,8 +72,33 @@ int main() {
         return 1;
     }
 
-    pthread_join(process_command_thread, (void*)&ret);
-    printf("\nJOIN ret thread value [%d]\n", ret);
+    label: iret = pthread_tryjoin_np(process_command_thread, NULL);
+
+    if ((iret != 0) && (iret != EBUSY)) {
+        perror("Pthread_tryjoin_np error: ");
+        return 1;
+    }
+    else if (iret == EBUSY) {
+        if (count == 15) {
+            printf("Поток занят, завершение работы.\n");
+            return 1;
+        }
+        printf("Попытка номер: %d\n", count + 1);
+            
+        if (usleep(1000000) == -1) {
+            perror("Usleep error: ");
+            return 1;
+        }
+
+        count++;
+        goto label;
+    }
+
+    if (iret == 0) {
+        printf("\n\nОтлично!\n");
+    }
+    
+    printf("JOIN ret thread value [%d]\n", ret);
     pthread_detach(pthread_self());
 
     if (close(fd) == -1) {
