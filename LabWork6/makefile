@@ -23,10 +23,10 @@ number2.o: number2.c main_header.h
 	gcc -O0 -g3 -Wall -c number2.c -pthread
 
 number3: number3.o
-	gcc -o number3 number3.o
+	gcc -o number3 number3.o -pthread
 
 number3.o: number3.c main_header.h
-	gcc -O0 -g3 -Wall -c number3.c
+	gcc -O0 -g3 -Wall -c number3.c -pthread
 
 clean:
 	@echo "This is a clean action"
