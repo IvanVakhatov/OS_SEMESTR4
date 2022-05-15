@@ -79,7 +79,7 @@ int main() {
         return 1;
     }
     else if (iret == EBUSY) {
-        if (count == 15) {
+        if (count == 5) {
             printf("Поток занят, завершение работы.\n");
             return 1;
         }
