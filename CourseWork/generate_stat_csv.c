@@ -134,7 +134,11 @@ void get_pids_stat(char csv_name[], int pid_num) {
 
     // Открытие файла для считывания pid'ов
     file = fopen("pids.txt", "r");
-
+        if (file == NULL) {
+        // В случае ошибки - выйти из функции досрочно
+        return;
+    }
+    
     // Прока не будет достигнут конец файла (EOF)
     // Запись в массив номера pid
     while (fscanf(file, "%d", &numbers[count]) != EOF) {
