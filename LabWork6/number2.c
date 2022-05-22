@@ -56,7 +56,12 @@ int main() {
     int fd, ret;
     int iret, count = 0;
 
+<<<<<<< HEAD
     //for((i=1;i<=50000;i++)); do echo -n $(($RANDOM))" "; done > digits2.txt");
+=======
+    /*BASH SCRIPT FOR GENERATING FILE (MUST BE WRITTEN IN SHELL TERMINAL):
+		for((i=1;i<=50000;i++)); do echo -n $(($RANDOM))" "; done > digits2.txt"); */
+>>>>>>> 77edeb0df8bb7c17133598205270d635baf6661e
 
     fd = open("digits2.txt", O_RDONLY);
     if (fd == -1) {
