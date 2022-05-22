@@ -5,12 +5,12 @@ char buffer[READ_LENGTH];
 
 int main(int argc, char* argv[]) {
     int cp_from, cp_to;
-    cp_from = open(argv[1], O_RDONLY | S_IRUSR, S_IWUSR);
+    cp_from = open("/proc/4/stat", O_RDONLY | S_IRUSR, S_IWUSR);
     if (cp_from == -1) {
         perror("Open base file error: ");
         return 1;
     }
-    cp_to = open(argv[2], O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    cp_to = open("pid_info.txt", O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
     if (cp_to == -1) {
         perror("Open destination file error: ");
         return 1;
