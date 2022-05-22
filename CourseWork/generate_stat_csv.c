@@ -26,8 +26,6 @@ void get_pid_stat(int pid_number, char csv_name[]) {
     FILE *csv_file;
     // Указатель на файл, в котором хранится статистика процесса
     FILE *pid_file;
-    // Счетчик кол-ва параметров
-    int count = 0;
 
     // Выделение памяти для хранения пути к файлу stat данного pid
     char file_path[PATH_MAX];
@@ -43,43 +41,24 @@ void get_pid_stat(int pid_number, char csv_name[]) {
         // В случае ошибки - выйти из функции досрочно
         return;
     }
+    // Иначе - открытие файла csv_name
     else {
-        // Иначе - открытие файла csv_name
+        // Счетчик кол-ва параметров
+        int count = 0;
+        // Переменная для хранения строки, содержащую параметр
+        char buffer[128];
+        // Открытие csv файла
         csv_file = fopen(csv_name, "a+");
         if (csv_file == NULL) {
             // В случае ошибки - досрочный выход из функции
             return;
         }
-        // Бесконечный цикл
-        while (42) {
-            // Переменная для хранения строки, содержащую параметр
-            char line[100];
-            char *parameter;
-            // Разделитель для файла - пробел
-            char *separator = " ";
-
-            // Если считанная строка содержит пустоту (EOF)
-            if (fgets(line, 100, pid_file) == NULL) {
-                // Запись в csv файл символа новой строки
-                fprintf(csv_file, "%s", "\n");
-                // Выход из цикла
-                break;
-            }
-            // Разделение строки с помощью ранее объявленного разделителя
-            parameter = strtok(line, separator);
-            while (parameter) {
-                // Запись в csv файл 25 первых парамтеров из файла /proc/pid/stat
-                if (count < 25) {
-                    //printf("%s,", parameter);
-                    // Запись в csv файл очередной параметр
-                    fprintf(csv_file, "%s,", parameter);
-                    // Увеличение счетчика параметров на 1
-                    count++;
-                }
-                parameter = strtok(NULL, separator);
-            }
+        // Запись параметров в файл
+        while ((fscanf(pid_file, "%s", buffer) == 1) && (count < 25) ) {
+            fprintf(csv_file, "%s,", buffer);
+            count++;
         }
-        // Закрытие файлового потока csv файла
+        fprintf(csv_file, "%s", "\n");
         fclose(csv_file);
     }
     // Закрытие файлового потока файла с pid'ами
