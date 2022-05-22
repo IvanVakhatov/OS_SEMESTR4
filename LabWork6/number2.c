@@ -52,13 +52,11 @@ void* sortSequence(void* p) {
 }
 
 int main() {
-    //char command[67];
     pthread_t process_command_thread;
     int fd, ret;
     int iret, count = 0;
 
-    //strcpy(command, "for((i=1;i<=10;i++)); do echo -n $(($RANDOM))" "; done > digits2.txt");
-    //system(command);
+    //for((i=1;i<=50000;i++)); do echo -n $(($RANDOM))" "; done > digits2.txt");
 
     fd = open("digits2.txt", O_RDONLY);
     if (fd == -1) {
