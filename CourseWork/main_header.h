@@ -3,6 +3,8 @@
 
 #define LINUX_PROC_TASK_PATH "/proc"
 #define LINUX_PROC_STAT_PATH "/stat"
+#define LINUX_PROC_UPTIME_PATH "/uptime"
+#define CLOCK_TICK 100
 
 #include <stdio.h> /* Стандартные функции ввода-вывода */
 #include <stdlib.h> /* Прототипы наиболее востребованных библиотечных
